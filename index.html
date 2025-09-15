@@ -3,88 +3,28 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dhruv Mangal | Data Scientist</title>
+  <title>Dhruv Mangal | Portfolio</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    /* ===== GLOBAL THEME ===== */
+    /* ===== GLOBAL STYLES ===== */
     body {
       margin: 0;
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       background: #0d0d0d;
       color: #e0e0e0;
-      line-height: 1.6;
+      scroll-behavior: smooth;
     }
-    h1, h2, h3 {
-      font-family: "Orbitron", sans-serif;
-      letter-spacing: 1px;
-      color: #fdd835; /* bat yellow */
-    }
-    a {
-      color: #29b6f6;
-      text-decoration: none;
-      transition: color 0.3s ease;
-    }
-    a:hover { color: #81d4fa; }
+    h1, h2, h3 { color: #fdd835; }
+    a { color: #29b6f6; text-decoration: none; }
 
-    /* ===== HEADER ===== */
-    header {
-      position: relative;
-      text-align: center;
-      padding: 4rem 2rem;
-      background: linear-gradient(to bottom, #111, #000);
-      overflow: hidden;
-    }
-    header h1 {
-      font-size: 3rem;
-      animation: fadeInDown 1.2s ease;
-    }
-    header p {
-      font-size: 1.2rem;
-      animation: fadeInUp 1.2s ease;
-    }
-    header .button {
-      margin: 1rem;
-      display: inline-block;
-      padding: 0.6rem 1.2rem;
-      background: #29b6f6;
-      color: #000;
-      border-radius: 6px;
-      font-weight: bold;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    header .button:hover {
-      transform: scale(1.05);
-      box-shadow: 0 0 20px #29b6f6;
-    }
-
-    /* Batman silhouette animation (CSS only) */
-    .bat-signal {
-      position: absolute;
-      top: -40px;
-      right: -60px;
-      width: 200px;
-      height: 200px;
-      background: radial-gradient(circle, rgba(253,216,53,0.8) 0%, transparent 70%);
-      border-radius: 50%;
-      animation: pulse 3s infinite;
-    }
-    .bat-shape {
-      position: absolute;
-      top: 20px;
-      right: 40px;
-      width: 120px;
-      height: 60px;
-      background: url('https://upload.wikimedia.org/wikipedia/commons/2/2e/Batman_logo.svg') no-repeat center;
-      background-size: contain;
-      filter: drop-shadow(0 0 5px #000);
-    }
-
-    /* ===== NAV ===== */
+    /* ===== NAVBAR ===== */
     nav {
+      position: fixed;
+      width: 100%;
+      top: 0; left: 0;
       background: #111;
+      padding: 0.8rem;
       text-align: center;
-      padding: 0.7rem;
-      position: sticky;
-      top: 0;
       z-index: 1000;
     }
     nav a {
@@ -93,46 +33,57 @@
       color: #fdd835;
       transition: text-shadow 0.3s ease;
     }
-    nav a:hover {
-      text-shadow: 0 0 10px #fdd835;
-    }
+    nav a:hover { text-shadow: 0 0 10px #fdd835; }
 
     /* ===== SECTIONS ===== */
     section {
-      max-width: 900px;
-      margin: auto;
-      padding: 3rem 2rem;
+      min-height: 100vh;
+      padding: 6rem 2rem 2rem;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      max-width: 1000px;
+      text-align: center;
       animation: fadeIn 1s ease;
     }
+
+    /* ===== HOME ===== */
+    #home {
+      background: url('https://wallpapercave.com/wp/wp7075400.jpg') no-repeat center/cover;
+      color: #fff;
+      text-shadow: 0 0 10px #000;
+    }
+    #home h1 { font-size: 3rem; }
+    #home p { font-size: 1.2rem; }
+
+    /* ===== SKILLS ===== */
+    .skills span {
+      display: inline-block;
+      margin: 0.4rem;
+      padding: 0.5rem 0.8rem;
+      background: #1c1c1c;
+      border: 1px solid #fdd83555;
+      border-radius: 6px;
+      color: #fdd835;
+      transition: transform 0.3s;
+    }
+    .skills span:hover { background: #fdd835; color: #000; transform: scale(1.1); }
+
+    /* ===== CARDS ===== */
     .card {
       background: #1c1c1c;
       padding: 1.5rem;
-      border-radius: 10px;
-      margin: 1rem 0;
-      box-shadow: 0 0 10px rgba(255, 235, 59, 0.1);
+      margin: 1rem;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(253,216,53,0.2);
       transition: transform 0.3s ease, box-shadow 0.3s ease;
     }
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 0 20px rgba(255, 235, 59, 0.3);
-    }
-
-    /* Skills tags */
-    .skills span {
-      display: inline-block;
-      margin: 0.4rem;
-      padding: 0.4rem 0.7rem;
-      background: #212121;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      color: #fdd835;
-      border: 1px solid #fdd83544;
-      transition: background 0.3s ease, transform 0.3s ease;
-    }
-    .skills span:hover {
-      background: #fdd835;
-      color: #000;
-      transform: scale(1.1);
+      box-shadow: 0 0 20px rgba(253,216,53,0.4);
     }
 
     /* ===== FOOTER ===== */
@@ -140,98 +91,115 @@
       background: #111;
       color: #777;
       text-align: center;
-      padding: 2rem;
+      padding: 1.5rem;
     }
 
     /* ===== ANIMATIONS ===== */
-    @keyframes fadeIn { from {opacity:0;} to {opacity:1;} }
-    @keyframes fadeInDown { from {opacity:0; transform: translateY(-30px);} to {opacity:1; transform: translateY(0);} }
-    @keyframes fadeInUp { from {opacity:0; transform: translateY(30px);} to {opacity:1; transform: translateY(0);} }
-    @keyframes pulse { 0% {opacity:0.6;} 50% {opacity:1;} 100% {opacity:0.6;} }
+    @keyframes fadeIn { from {opacity: 0;} to {opacity: 1;} }
   </style>
-  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- HEADER -->
-  <header>
-    <div class="bat-signal"></div>
-    <div class="bat-shape"></div>
-    <h1>Dhruv Mangal</h1>
-    <p>Data Scientist | Gotham-inspired Problem Solver</p>
-    <a class="button" href="https://www.linkedin.com/in/dhruvmangal007/" target="_blank">LinkedIn</a>
-    <a class="button" href="mailto:dhruv.mangal@example.com">Email</a>
-  </header>
 
   <!-- NAV -->
   <nav>
+    <a href="#home">Home</a>
     <a href="#about">About</a>
     <a href="#skills">Skills</a>
     <a href="#projects">Projects</a>
     <a href="#experience">Experience</a>
     <a href="#education">Education</a>
+    <a href="#contact">Contact</a>
   </nav>
+
+  <!-- HOME -->
+  <section id="home">
+    <div class="container">
+      <h1>Dhruv Mangal</h1>
+      <p>Data Scientist | Gotham-inspired Problem Solver</p>
+      <p><a href="https://www.linkedin.com/in/dhruvmangal007/" target="_blank"><i class="fab fa-linkedin"></i></a>
+         <a href="mailto:dhruv.mangal@example.com"><i class="fas fa-envelope"></i></a></p>
+    </div>
+  </section>
 
   <!-- ABOUT -->
   <section id="about">
-    <h2>About Me</h2>
-    <p>Master’s in Data Science candidate at Macquarie University (WAM 80.5, expected Nov 2025). 
-    Experienced in building ML pipelines, fraud detection systems, and scalable software solutions. 
-    Former Software Engineer with 3+ years of experience. Always chasing data mysteries like Batman in Gotham 🦇.</p>
+    <div class="container">
+      <h2>About Me</h2>
+      <p>Master’s in Data Science candidate at Macquarie University (WAM 80.5, expected Nov 2025). Experienced in ML pipelines, fraud detection, and scalable software solutions. Former Software Engineer with 3+ years of experience. Always chasing data mysteries like Batman in Gotham 🦇.</p>
+    </div>
   </section>
 
   <!-- SKILLS -->
   <section id="skills">
-    <h2>Skills</h2>
-    <div class="skills">
-      <span>Python</span><span>R</span><span>SQL</span><span>Java</span>
-      <span>TensorFlow</span><span>PyTorch</span><span>Scikit-learn</span>
-      <span>XGBoost</span><span>Neo4j</span><span>Tableau</span>
-      <span>NLP</span><span>Transformers</span><span>Bayesian Inference</span>
+    <div class="container">
+      <h2>Skills</h2>
+      <div class="skills">
+        <span>Python</span><span>R</span><span>SQL</span><span>Java</span>
+        <span>TensorFlow</span><span>PyTorch</span><span>Scikit-learn</span>
+        <span>XGBoost</span><span>Neo4j</span><span>Tableau</span>
+        <span>NLP</span><span>Transformers</span><span>Bayesian Inference</span>
+      </div>
     </div>
   </section>
 
   <!-- PROJECTS -->
   <section id="projects">
-    <h2>Projects</h2>
-    <div class="card">
-      <h3>Fraud Detection using Neo4j Graph Data Science</h3>
-      <p>Designed and implemented a fraud detection system using Neo4j GDS. Applied community detection algorithms to uncover fraudulent clusters among financial transactions.</p>
+    <div class="container">
+      <h2>Projects</h2>
+      <div class="card">
+        <h3>Fraud Detection using Neo4j Graph Data Science</h3>
+        <p>Built a fraud detection system using Neo4j GDS and community detection algorithms to uncover fraudulent clusters in financial transactions.</p>
+      </div>
     </div>
   </section>
 
   <!-- EXPERIENCE -->
   <section id="experience">
-    <h2>Experience</h2>
-    <div class="card">
-      <h3>Data Science Intern — Truuth (2025-Present)</h3>
-      <p>Built global ID document datasets, enhanced OCR accuracy, collaborated with ML engineers for reproducible workflows.</p>
-    </div>
-    <div class="card">
-      <h3>Software Engineer — Unthinkable Solutions (2021-2024)</h3>
-      <p>Developed features, optimized performance, applied ML models, and built data pipelines for insights.</p>
-    </div>
-    <div class="card">
-      <h3>Junior Software Engineer — OneBanc (2020-2021)</h3>
-      <p>Built UPI-based Android apps, designed BBPS modules, and optimized UI performance.</p>
+    <div class="container">
+      <h2>Experience</h2>
+      <div class="card">
+        <h3>Truuth | Data Science Intern (2025-Present)</h3>
+        <p>Curated ID document datasets, enhanced OCR accuracy, and developed reproducible ML workflows.</p>
+      </div>
+      <div class="card">
+        <h3>Unthinkable Solutions | Software Engineer (2021-2024)</h3>
+        <p>Developed features, optimized performance, built ML pipelines, and implemented data insights.</p>
+      </div>
+      <div class="card">
+        <h3>OneBanc | Junior Software Engineer (2020-2021)</h3>
+        <p>Built UPI apps, BBPS modules, and optimized Android UI performance.</p>
+      </div>
     </div>
   </section>
 
   <!-- EDUCATION -->
   <section id="education">
-    <h2>Education</h2>
-    <div class="card">
-      <h3>Macquarie University — Master of Data Science (Expected 2025)</h3>
-      <p>WAM: 80.5 | Coursework: Data Science, AI, Software Engineering, Algorithms, System Design</p>
+    <div class="container">
+      <h2>Education</h2>
+      <div class="card">
+        <h3>Macquarie University — MDS (2023-2025)</h3>
+        <p>WAM 80.5 | Coursework: Data Science, AI, Algorithms, System Design</p>
+      </div>
+      <div class="card">
+        <h3>Rajasthan Technical University — B.Tech (2017-2021)</h3>
+        <p>GPA: 8.0 | Coursework: Software Engineering, Algorithms, System Design</p>
+      </div>
     </div>
-    <div class="card">
-      <h3>Rajasthan Technical University — B.Tech, Computer Science (2017-2021)</h3>
-      <p>GPA: 8.0 | Coursework: Software Engineering, Algorithms, System Design</p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="container">
+      <h2>Contact</h2>
+      <p><i class="fas fa-envelope"></i> dhruv.mangal@example.com</p>
+      <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/dhruvmangal007/" target="_blank">LinkedIn</a></p>
     </div>
   </section>
 
   <!-- FOOTER -->
   <footer>
-    <p>&copy; 2025 Dhruv Mangal | Gotham-themed Portfolio on GitHub Pages</p>
+    <p>&copy; 2025 Dhruv Mangal | Gotham-themed Portfolio</p>
   </footer>
+
 </body>
 </html>
