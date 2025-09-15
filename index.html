@@ -1,246 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Dhruv Mangal | Iron Man Portfolio</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-  <style>
-    body {
-      margin: 0;
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #0a0a0a;
-      color: #e0e0e0;
-      scroll-behavior: smooth;
-      overflow-x: hidden;
-    }
-    h1, h2, h3 { color: #fdd835; }
-    a { color: #29b6f6; text-decoration: none; }
+import { Card, CardContent } from "@/components/ui/card"
+import { Button } from "@/components/ui/button"
+import { Github, Linkedin, Mail } from "lucide-react"
 
-    /* ===== NAVBAR ===== */
-    nav {
-      position: fixed;
-      top: 0; left: 0;
-      width: 100%;
-      background: rgba(17, 17, 17, 0.9);
-      padding: 0.8rem;
-      text-align: center;
-      z-index: 1000;
-      border-bottom: 2px solid #b71c1c;
-      backdrop-filter: blur(6px);
-    }
-    nav a {
-      margin: 0 1rem;
-      font-weight: bold;
-      color: #fdd835;
-      transition: text-shadow 0.3s ease, color 0.3s ease;
-    }
-    nav a:hover { color: #29b6f6; text-shadow: 0 0 10px #29b6f6; }
+export default function Portfolio() {
+  return (
+    <div className="min-h-screen bg-white text-black">
+      {/* Header */}
+      <header className="flex justify-between items-center px-8 py-4 border-b">
+        <h1 className="text-xl font-bold">Dhruv Mangal | Portfolio</h1>
+        <nav className="space-x-6">
+          <a href="#about" className="hover:underline">About</a>
+          <a href="#projects" className="hover:underline">Projects</a>
+          <a href="#contact" className="hover:underline">Contact</a>
+        </nav>
+      </header>
 
-    /* ===== SECTIONS ===== */
-    section {
-      min-height: 100vh;
-      padding: 7rem 2rem 3rem;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
-    .container { max-width: 1000px; text-align: center; opacity: 0; transform: translateY(40px); transition: all 1s ease; }
-    .container.visible { opacity: 1; transform: translateY(0); }
+      {/* Hero Section */}
+      <section className="flex flex-col items-center text-center py-20">
+        <img src="/profile.jpg" alt="Dhruv Mangal" className="w-32 h-32 rounded-full shadow-lg mb-6" />
+        <h2 className="text-4xl font-bold mb-4">Hi, I'm Dhruv Mangal</h2>
+        <p className="text-lg text-gray-700 max-w-2xl">
+          Data Scientist | Machine Learning Engineer | Cloud & AI Innovator
+        </p>
+        <div className="mt-6 space-x-4">
+          <Button asChild><a href="#contact">Get in Touch</a></Button>
+          <Button asChild variant="outline"><a href="#projects">View Projects</a></Button>
+        </div>
+      </section>
 
-    /* ===== HERO (ARC REACTOR) ===== */
-    #home {
-      background: radial-gradient(circle at center, rgba(41,182,246,0.15) 0%, transparent 70%),
-                  url('https://images.unsplash.com/photo-1553949345-eb786bb3e3e8?ixlib=rb-4.0.3&q=80&auto=format&fit=crop&w=2000') no-repeat center/cover;
-      color: #fff;
-      text-shadow: 0 0 15px #000;
-      position: relative;
-    }
-    #home h1 { font-size: 3rem; margin-top: 1rem; }
-    #home p { font-size: 1.2rem; }
+      {/* About Me Section */}
+      <section id="about" className="px-8 py-16 bg-gray-50">
+        <h3 className="text-3xl font-bold text-center mb-12">Crafting AI Solutions & Data Science</h3>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <Card>
+            <CardContent className="p-6">
+              <h4 className="font-bold mb-2">Background</h4>
+              <p>
+                As a Data Scientist and aspiring ML Engineer, I specialize in building end-to-end AI/ML solutions, fraud detection systems, and data-driven insights.
+              </p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-6">
+              <h4 className="font-bold mb-2">AI & Machine Learning</h4>
+              <p>Neural Networks, Transformers, Deep Learning, NLP, Graph Data Science</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-6">
+              <h4 className="font-bold mb-2">Programming</h4>
+              <p>Python, R, SQL, Java, TensorFlow, PyTorch, Scikit-Learn</p>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-6">
+              <h4 className="font-bold mb-2">Data Science</h4>
+              <p>Feature Engineering, A/B Testing, Bayesian Inference, Visualization</p>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
 
-    .arc-reactor {
-      width: 180px;
-      margin: 20px auto;
-    }
-    .arc-reactor svg {
-      width: 100%;
-      height: auto;
-      animation: spin 8s linear infinite;
-      filter: drop-shadow(0 0 15px #29b6f6);
-    }
-    @keyframes spin { from {transform: rotate(0deg);} to {transform: rotate(360deg);} }
+      {/* Projects Section */}
+      <section id="projects" className="px-8 py-16">
+        <h3 className="text-3xl font-bold text-center mb-12">Featured Projects</h3>
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <Card>
+            <CardContent className="p-6">
+              <h4 className="font-bold mb-2">Fraud Detection using Neo4j</h4>
+              <p>Designed a fraud detection system using community detection algorithms in Neo4j Graph Data Science.</p>
+              <a href="https://github.com/your-github" className="text-blue-600 mt-4 inline-block">GitHub</a>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-6">
+              <h4 className="font-bold mb-2">Sleep Disorder Detection (IoT)</h4>
+              <p>Developed ML models to analyze audio signals and detect sleep disorders using IoT data.</p>
+              <a href="https://github.com/your-github" className="text-blue-600 mt-4 inline-block">GitHub</a>
+            </CardContent>
+          </Card>
+          <Card>
+            <CardContent className="p-6">
+              <h4 className="font-bold mb-2">Emotion Recognition in Call Centers</h4>
+              <p>Built deep learning models for sentiment and emotion classification in call center audio data.</p>
+              <a href="https://github.com/your-github" className="text-blue-600 mt-4 inline-block">GitHub</a>
+            </CardContent>
+          </Card>
+        </div>
+      </section>
 
-    /* ===== SKILLS ===== */
-    .skills span {
-      display: inline-block;
-      margin: 0.5rem;
-      padding: 0.5rem 0.8rem;
-      background: #111;
-      border: 1px solid #29b6f6;
-      border-radius: 8px;
-      color: #29b6f6;
-      font-weight: bold;
-      transition: transform 0.3s, box-shadow 0.3s;
-    }
-    .skills span:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 15px #29b6f6;
-      background: #0d47a1;
-      color: #fff;
-    }
-
-    /* ===== CARDS ===== */
-    .card {
-      background: #141414;
-      padding: 1.5rem;
-      margin: 1rem;
-      border-radius: 8px;
-      border: 2px solid #b71c1c;
-      box-shadow: 0 0 15px rgba(183,28,28,0.5);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 0 25px #29b6f6;
-    }
-
-    /* ===== FOOTER ===== */
-    footer {
-      background: #111;
-      color: #777;
-      text-align: center;
-      padding: 1.5rem;
-      border-top: 2px solid #b71c1c;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- NAV -->
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#about">About</a>
-    <a href="#skills">Skills</a>
-    <a href="#projects">Projects</a>
-    <a href="#experience">Experience</a>
-    <a href="#education">Education</a>
-    <a href="#contact">Contact</a>
-  </nav>
-
-  <!-- HOME -->
-  <section id="home">
-    <div class="container visible">
-      <div class="arc-reactor">
-        <!-- Hi-res SVG Arc Reactor -->
-        <svg viewBox="0 0 100 100">
-          <circle cx="50" cy="50" r="45" stroke="#29b6f6" stroke-width="6" fill="none"/>
-          <circle cx="50" cy="50" r="30" stroke="#29b6f6" stroke-width="4" fill="none" stroke-dasharray="10,5"/>
-          <circle cx="50" cy="50" r="15" fill="#29b6f6" opacity="0.8"/>
-        </svg>
-      </div>
-      <h1>Dhruv Mangal</h1>
-      <p>Data Scientist | Powered by Innovation</p>
-      <p>
-        <a href="https://www.linkedin.com/in/dhruvmangal007/" target="_blank"><i class="fab fa-linkedin"></i></a>
-        <a href="mailto:dhruv.mangal@example.com"><i class="fas fa-envelope"></i></a>
-      </p>
+      {/* Footer */}
+      <footer className="px-8 py-8 border-t bg-gray-50 text-center">
+        <div className="mb-4 space-x-4">
+          <a href="https://github.com/dmangal" target="_blank"><Github className="inline w-6 h-6" /></a>
+          <a href="https://www.linkedin.com/in/dhruvmangal007/" target="_blank"><Linkedin className="inline w-6 h-6" /></a>
+          <a href="mailto:dhruv@example.com"><Mail className="inline w-6 h-6" /></a>
+        </div>
+        <p>© 2025 Dhruv Mangal. All rights reserved.</p>
+      </footer>
     </div>
-  </section>
-
-  <!-- ABOUT -->
-  <section id="about">
-    <div class="container">
-      <h2>About Me</h2>
-      <p>Master’s in Data Science candidate at Macquarie University (WAM 80.5, expected Nov 2025). Experienced in ML pipelines, fraud detection, and scalable software solutions. Former Software Engineer with 3+ years of experience. Like Tony Stark, I blend engineering and creativity to build impactful solutions 🚀.</p>
-    </div>
-  </section>
-
-  <!-- SKILLS -->
-  <section id="skills">
-    <div class="container">
-      <h2>Skills</h2>
-      <div class="skills">
-        <span>Python</span><span>R</span><span>SQL</span><span>Java</span>
-        <span>TensorFlow</span><span>PyTorch</span><span>Scikit-learn</span>
-        <span>XGBoost</span><span>Neo4j</span><span>Tableau</span>
-        <span>NLP</span><span>Transformers</span><span>Bayesian Inference</span>
-      </div>
-    </div>
-  </section>
-
-  <!-- PROJECTS -->
-  <section id="projects">
-    <div class="container">
-      <h2>Projects</h2>
-      <div class="card">
-        <h3>Fraud Detection using Neo4j Graph Data Science</h3>
-        <p>Built a fraud detection system using Neo4j GDS and community detection algorithms to uncover fraudulent clusters in financial transactions.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- EXPERIENCE -->
-  <section id="experience">
-    <div class="container">
-      <h2>Experience</h2>
-      <div class="card">
-        <h3>Truuth | Data Science Intern (2025-Present)</h3>
-        <p>Curated ID document datasets, enhanced OCR accuracy, and developed reproducible ML workflows.</p>
-      </div>
-      <div class="card">
-        <h3>Unthinkable Solutions | Software Engineer (2021-2024)</h3>
-        <p>Developed features, optimized performance, built ML pipelines, and implemented data insights.</p>
-      </div>
-      <div class="card">
-        <h3>OneBanc | Junior Software Engineer (2020-2021)</h3>
-        <p>Built UPI apps, BBPS modules, and optimized Android UI performance.</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- EDUCATION -->
-  <section id="education">
-    <div class="container">
-      <h2>Education</h2>
-      <div class="card">
-        <h3>Macquarie University — MDS (2023-2025)</h3>
-        <p>WAM 80.5 | Coursework: Data Science, AI, Algorithms, System Design</p>
-      </div>
-      <div class="card">
-        <h3>Rajasthan Technical University — B.Tech (2017-2021)</h3>
-        <p>GPA: 8.0 | Coursework: Software Engineering, Algorithms, System Design</p>
-      </div>
-    </div>
-  </section>
-
-  <!-- CONTACT -->
-  <section id="contact">
-    <div class="container">
-      <h2>Contact</h2>
-      <p><i class="fas fa-envelope"></i> dhruv.mangal@example.com</p>
-      <p><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/dhruvmangal007/" target="_blank">LinkedIn</a></p>
-    </div>
-  </section>
-
-  <!-- FOOTER -->
-  <footer>
-    <p>&copy; 2025 Dhruv Mangal | Iron Man Portfolio</p>
-  </footer>
-
-  <!-- ===== SCROLL ANIMATION SCRIPT ===== -->
-  <script>
-    const sections = document.querySelectorAll('.container');
-    const revealOnScroll = () => {
-      sections.forEach(sec => {
-        const rect = sec.getBoundingClientRect();
-        if (rect.top < window.innerHeight - 100) sec.classList.add('visible');
-      });
-    };
-    window.addEventListener('scroll', revealOnScroll);
-    revealOnScroll();
-  </script>
-
-</body>
-</html>
+  )
+}
